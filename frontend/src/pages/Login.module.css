@@ -1,0 +1,50 @@
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.error {
+  color: var(--danger-color);
+  font-size: 0.85rem;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 10px;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  margin-top: 8px;
+}

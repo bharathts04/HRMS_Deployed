@@ -1,0 +1,23 @@
+Based on the backend security configurations (@PreAuthorize), the system is designed with a very clear hierarchy. Here is exactly what each role can do:
+
+👑 ADMIN
+The Admin has the highest level of access and can do everything HR and Employees can do, plus:
+
+Department Management: Only the Admin has the authority to create, update, or delete Departments across the company.
+👔 HR (Human Resources)
+HR has full operational control over the workforce and company data, but cannot modify the core structural departments. Their permissions include:
+
+Employee Management: Can add new employees, update profiles, and delete employees.
+Payroll & Finance: Can process payroll and generate salary slips.
+Announcements: Can create, edit, or delete company-wide announcements.
+Dashboard Access: Has exclusive access to the HR metrics dashboard to view headcount and analytics.
+Document Management: Can upload and manage compliance or personal documents for employees.
+Leave & Performance (Shared with Managers): Can approve/reject leave applications and submit performance reviews.
+👤 EMPLOYEE (Self-Service)
+Employees have restricted access. They can only view public company information or manage their own personal data:
+
+Attendance: Can clock in and clock out daily, and view their own attendance history.
+Leave Applications: Can apply for leave (Sick, Casual, etc.) and check the status of their requests.
+View Personal Records: Can view their own payslips, read their performance reviews, and access their own documents.
+View Company Data: Can read company announcements, view the list of departments, and view basic employee directory profiles.
+(Note: There is also a MANAGER role in the code that acts as a middle-ground. Managers can approve leaves, write performance reviews, and view the list of employees, but they cannot process payroll or create company-wide announcements).
