@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api from '../utils/api';
+import api, { API_BASE_URL } from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import { User, Phone, MapPin, Briefcase, Building2 } from 'lucide-react';
 
@@ -142,7 +142,7 @@ const Profile = () => {
           <div className="glass-card p-6" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             {profile.profilePhotoUrl ? (
               <img 
-                src={`http://localhost:8081${profile.profilePhotoUrl}`} 
+                src={`${API_BASE_URL}${profile.profilePhotoUrl}`} 
                 alt="Profile" 
                 style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', marginBottom: '16px' }}
               />

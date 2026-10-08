@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import api from '../utils/api';
+import api, { API_BASE_URL } from '../utils/api';
 import { Line, Doughnut, Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -476,7 +476,7 @@ const Dashboard = () => {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '24px' }}>
             {employeeProfile.profilePhotoUrl ? (
               <img 
-                src={`http://localhost:8081${employeeProfile.profilePhotoUrl}`} 
+                src={`${API_BASE_URL}${employeeProfile.profilePhotoUrl}`} 
                 alt="Profile" 
                 style={{ width: '120px', height: '120px', borderRadius: '50%', objectFit: 'cover', marginBottom: '16px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
               />
