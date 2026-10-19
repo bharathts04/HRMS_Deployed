@@ -8,6 +8,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.authentication.BadCredentialsException;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,8 +27,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ApiResponse.error(ex.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(BadCredentialsException.class)
-    public ResponseEntity<ApiResponse<Void>> handleBadCredentialsException(BadCredentialsException ex) {
+    @ExceptionHandler({BadCredentialsException.class, UsernameNotFoundException.class, AuthenticationException.class})
+    public ResponseEntity<ApiResponse<Void>> handleAuthenticationException(Exception ex) {
         return new ResponseEntity<>(ApiResponse.error("Invalid email or password"), HttpStatus.UNAUTHORIZED);
     }
 
@@ -43,7 +45,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleGlobalException(Exception ex) {
-        // In a real application, log the exception details here
-        return new ResponseEntity<>(ApiResponse.error("An internal server error occurred"), HttpStatus.INTERNAL_SERVER_ERROR);
+        ex.printStackTrace();
+        String message = ex.getMessage() != null ? ex.getMessage() : "An internal server error occurred";
+        if (ex.getCause() != null && ex.getCause().getMessage() != null) {
+            message += ": " + ex.getCause().getMessage();
+        }
+        return new ResponseEntity<>(ApiResponse.error(message), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
