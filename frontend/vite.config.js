@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8081',
+        target: 'https://hrms-deployed-i7w8.onrender.com',
         changeOrigin: true,
       }
     }
